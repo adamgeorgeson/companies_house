@@ -1,0 +1,5 @@
+# build :default do
+#   yard :coverage => 100
+#
+#   rspec :coverage => 100
+# end
