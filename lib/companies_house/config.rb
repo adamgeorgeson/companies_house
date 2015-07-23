@@ -1,3 +1,4 @@
+# Wrapper for interacting with Companies House API
 module CompaniesHouse
   # Configuration loading
   module Config

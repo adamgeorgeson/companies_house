@@ -11,6 +11,12 @@ module CompaniesHouse
       @options = { basic_auth: { username: Config.private_key } }
     end
 
+    # Search for companies
+    #
+    # @param [String] query The query string
+    # @param [Hash] options Optional paramaters
+    # @option options [Integer] :items_per_page Items per page
+    # @option options [Integer] :start_index Start Index
     def company_search(query, options = {})
       raise 'nil query param' unless query
       self.options[:query] = { q: query}
