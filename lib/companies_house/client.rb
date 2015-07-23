@@ -51,7 +51,23 @@ module CompaniesHouse
       self.options[:query][:items_per_page] = options[:items_per_page]
       self.options[:query][:start_index] = options[:start_index]
       # self.class.get('/search/companies', self.options)
-      self.class.get('/companies', self.options)
+      get('/companies')
+    end
+
+    # Find extended company information
+    #
+    # @param company_number [String] company house reference number
+    # @return [Company] Company object
+    def company(company_number)
+      result = get("/companies/#{company_number}")
+      attributes = Hash[result.map { |k,v| [k.to_sym, v] }]
+      Company.new(attributes)
+    end
+
+    private
+
+    def get(path)
+      self.class.get(path, self.options)
     end
   end
 end
