@@ -1,7 +1,7 @@
 module CompaniesHouse
   # Configuration loading
   module Config
-    mattr_accessor :private_key
+    mattr_accessor :private_key, :base_uri
 
     # Load config from supplied hash
     #
@@ -14,6 +14,7 @@ module CompaniesHouse
 
     def self.configure(provided_config)
       self.private_key = provided_config['private_key']
+      self.base_uri = provided_config['base_uri']
     end
   end
 end
