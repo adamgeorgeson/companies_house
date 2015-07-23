@@ -3,6 +3,8 @@ require 'spec_helper'
 describe CompaniesHouse::Client do
   subject { described_class.new }
 
+  let(:query) { 'Sage UK' }
+
   it 'includes HTTParty' do
     expect(described_class).to include HTTParty
   end
@@ -15,8 +17,18 @@ describe CompaniesHouse::Client do
     expect(subject.options[:basic_auth][:username]).to eq CompaniesHouse::Config.private_key
   end
 
+  describe '#search' do
+    it 'creates SearchResult objects for each search result' do
+      response = subject.search(query)
+      expect(response.class).to be Array
+
+      response.each do |r|
+        expect(r.class).to be CompaniesHouse::SearchResult
+      end
+    end
+  end
+
   describe '#company_search' do
-    let(:query) { 'Sage UK' }
     it 'gets list of companies matching query paramater' do
       expect(subject.company_search(query)).to be_truthy
     end
