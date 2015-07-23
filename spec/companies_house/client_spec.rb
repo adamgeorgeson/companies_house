@@ -7,7 +7,7 @@ describe CompaniesHouse::Client do
     expect(described_class).to include HTTParty
   end
 
-  it 'has a base_uri set to Bankin API endpoint' do
+  it 'has a base_uri set to Companies House API endpoint' do
     expect(described_class.base_uri).to eq 'https://api.companieshouse.gov.uk'
   end
 

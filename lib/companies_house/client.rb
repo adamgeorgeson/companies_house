@@ -1,5 +1,5 @@
 module CompaniesHouse
-  # Client class used to send requests to the Bankin API
+  # Client class used to send requests to the Companies House API
   class Client
     include HTTParty
 
