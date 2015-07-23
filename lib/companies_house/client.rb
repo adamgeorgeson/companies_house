@@ -3,12 +3,14 @@ module CompaniesHouse
   class Client
     include HTTParty
 
-    base_uri 'https://api.companieshouse.gov.uk'
+    # base_uri 'https://api.companieshouse.gov.uk'
+    base_uri 'https://companyhouse.herokuapp.com/api/v1'
 
     attr_accessor :options
 
     def initialize
-      @options = { basic_auth: { username: Config.private_key } }
+      # @options = { basic_auth: { username: Config.private_key } }
+      @options = { query: { api_key: Config.private_key } }
     end
 
     # Search for companies
@@ -45,10 +47,11 @@ module CompaniesHouse
     # @option options [Integer] :start_index Start Index
     def company_search(query, options = {})
       raise 'nil query param' unless query
-      self.options[:query] = { q: query}
+      self.options[:query][:q] = query
       self.options[:query][:items_per_page] = options[:items_per_page]
       self.options[:query][:start_index] = options[:start_index]
-      self.class.get('/search/companies', self.options)
+      # self.class.get('/search/companies', self.options)
+      self.class.get('/companies', self.options)
     end
   end
 end

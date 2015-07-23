@@ -10,11 +10,12 @@ describe CompaniesHouse::Client do
   end
 
   it 'has a base_uri set to Companies House API endpoint' do
-    expect(described_class.base_uri).to eq 'https://api.companieshouse.gov.uk'
+    expect(described_class.base_uri).to eq 'https://companyhouse.herokuapp.com/api/v1'
   end
 
   it 'initialises with a private key' do
-    expect(subject.options[:basic_auth][:username]).to eq CompaniesHouse::Config.private_key
+    # expect(subject.options[:basic_auth][:username]).to eq CompaniesHouse::Config.private_key
+    expect(subject.options[:query][:api_key]).to eq CompaniesHouse::Config.private_key
   end
 
   describe '#search' do
