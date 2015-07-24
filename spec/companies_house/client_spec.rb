@@ -18,6 +18,14 @@ describe CompaniesHouse::Client do
     expect(subject.options[:query][:api_key]).to eq CompaniesHouse::Config.private_key
   end
 
+  describe '#company' do
+    let(:query) { '01045967' }
+    it 'creates Company object for result' do
+      response = subject.company(query)
+      expect(response.class).to be CompaniesHouse::Company
+    end
+  end
+
   describe '#search' do
     it 'creates SearchResult objects for each search result' do
       response = subject.search(query)
