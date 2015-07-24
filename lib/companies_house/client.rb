@@ -76,7 +76,7 @@ module CompaniesHouse
         satisfied_count: result['satisfied_count'],
         unfiltered_count: result['unfiltered_count']
       }
-      ChargeSummary.new(attributes)
+      CompaniesHouse::ChargeSummary.new(attributes)
     end
 
     private

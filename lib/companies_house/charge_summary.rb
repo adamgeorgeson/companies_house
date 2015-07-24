@@ -1,7 +1,6 @@
 module CompaniesHouse
   # Charge class to represent a search result retrieved via Companies House API
   class ChargeSummary
-
     attr_accessor :total_count, :part_satisfied_count, :satisfied_count, :unfiltered_count
 
     # @param [Hash] options The options to create a Company
