@@ -64,6 +64,21 @@ module CompaniesHouse
       Company.new(attributes)
     end
 
+    # Retrieve charge summary for company
+    #
+    # @param company_number [String] company house reference number
+    # @return [ChargeSummary] ChargeSummary object
+    def charge_summary(company_number)
+      result = get("/companies/#{company_number}/charges")
+      attributes = {
+        total_count: result['total_count'],
+        part_satisfied_count: result['part_satisfied_count'],
+        satisfied_count: result['satisfied_count'],
+        unfiltered_count: result['unfiltered_count']
+      }
+      ChargeSummary.new(attributes)
+    end
+
     private
 
     def get(path)

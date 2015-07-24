@@ -26,6 +26,14 @@ describe CompaniesHouse::Client do
     end
   end
 
+  describe '#charge_summary' do
+    let(:query) { '01045967' }
+    it 'creates ChargeSummary object for result' do
+      response = subject.charge_summary(query)
+      expect(response.class).to be CompaniesHouse::ChargeSummary
+    end
+  end
+
   describe '#search' do
     it 'creates SearchResult objects for each search result' do
       response = subject.search(query)
